@@ -1,0 +1,8 @@
+---
+-	 
+  become: true
+  hosts: all
+  tasks:
+    -
+     name: Creates file
+     file: path=/tmp/jayaram/ansible.txt state=touch
