@@ -1,0 +1,22 @@
+---
+ - hosts: all
+   user: root
+   tasks:
+     - name: install httpd package
+	   yum:
+	     name: httpd
+		 state: present
+	   tags:
+	     - install
+	  - name: starting service
+        service:
+          name: httpd 
+          state: started
+        tags:
+           - start
+	  - name: stop service
+        service:
+           name: httpd
+           state: stopped
+        tags:
+          - stop		
