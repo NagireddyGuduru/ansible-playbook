@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   become: yes
   gather_facts: no  
 
@@ -7,10 +7,9 @@
     - name: add several users
       user:
         name: "{{ item }}"
-        state: present
-        groups: "sudo"
+        state: absent
+        groups: "root"
       with_items:
-        - testuser1
-        - testuser2
-
+        - nagi
+        - bala
 

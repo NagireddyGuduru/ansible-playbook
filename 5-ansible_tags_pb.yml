@@ -1,22 +1,29 @@
 ---
- - hosts: all
-   user: root
-   tasks:
-     - name: install httpd package
-	   yum:
-	     name: httpd
-		 state: present
-	   tags:
-	     - install
-	  - name: starting service
-        service:
-          name: httpd 
-          state: started
-        tags:
-           - start
-	  - name: stop service
-        service:
+-
+  become: true
+  hosts: all
+  tasks:
+    -
+      name: "install the latest version of Apache"
+      yum:
+        name: httpd
+        state: latest
+      tags:
+        - install
+    -
+      name: starting service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      tags:
+        - start
+    -
+      name: stop service
+      service:
            name: httpd
            state: stopped
-        tags:
-          - stop		
+      tags:
+         - stop
+
+

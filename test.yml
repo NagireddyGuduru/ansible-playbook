@@ -1,10 +1,11 @@
-- hosts: lb 
+---
+- hosts: all 
   connection: local
   tasks:
     - debug:
         # Comma-separated string of all ip4 addresses of hosts
         msg: |
           {% set comma = joiner(",") %}
-          {% for item in ['lb', 'lb'] -%}
+          {% for item in ['myservers', 'myservers'] -%}
               {{ comma() }}{{ hostvars[item].ansible_default_ipv4.address }}
           {%- endfor %}

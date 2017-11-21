@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   become: yes
   gather_facts: no  
 
@@ -10,7 +10,7 @@
         state: present
         groups: "{{ item.groups }}"
       with_items:
-        - { name: 'test1', groups: 'sudo' }
-        - { name: 'testuser1', groups: 'root' }
+        - { name: 'ansible-user-1', groups: 'tomcat' }
+        - { name: 'ansible-user-2', groups: 'ec2-user' }
 
 

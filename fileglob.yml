@@ -1,20 +1,19 @@
 ---
-- hosts: localhost
+- hosts: all
   become: yes
   tasks:
 
     # first ensure our target directory exists
     - name: Ensure target directory exists
       file:
-        dest: "~/fooapp"
+        dest: "/tmp/ansible"
         state: directory
 
     # copy each file over that matches the given pattern
     - name: Copy each file over that matches the given pattern
       copy:
         src: "{{ item }}"
-        dest: "~/fooapp/"
-        owner: "root"
+        dest: "/tmp/ansible"
         mode: 0600
       with_fileglob:
-        - "~/playbooks/files/fooapp/*"
+        - "/home/ubuntu/ansible-playbook/*"
