@@ -4,4 +4,8 @@
   hosts: all
   tasks:
     - name: Download package from nexus
-      get_url: url=http://34.215.252.242:8081/nexus/service/local/artifact/maven/redirect?g=in.mphasis&a=DevOpsDemoProject&v=LATEST&r=snapshots&p=war dest="/tmp/myweb.war" force=yes
+      get_url: url=http://34.215.67.51:8081/nexus/service/local/artifact/maven/redirect?g=in.mphasis&a=DevOpsDemoProject&v=LATEST&r=snapshots&p=war dest="/tmp/myweb.war" force=yes
+
+    - 
+      name: Copy index.html file to destination
+      command: "cp /tmp/myweb.war /opt/apache-tomcat-8.5.16/webapps"

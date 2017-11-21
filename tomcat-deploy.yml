@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: myservers
   become: true
   tasks:
     - name: Install Java 1.8
@@ -30,3 +30,4 @@
       become_user: tomcat
 
     
+
